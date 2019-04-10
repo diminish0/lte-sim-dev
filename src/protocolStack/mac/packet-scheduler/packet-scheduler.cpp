@@ -147,6 +147,21 @@ PacketScheduler::FlowToSchedule::GetSpectralEfficiency (void)
 {
   return m_spectralEfficiency;
 }
+void 
+PacketScheduler::FlowToSchedule::SetAllocatedBits(int allocatedBits)
+{
+  m_allocatedBits = allocatedBits;
+  int availableBytes = m_allocatedBits/8;
+
+  int transmittedPackets = ceil
+        (availableBytes/1513.0);
+
+  m_transmittedData = availableBytes - (transmittedPackets * 8);
+  if (m_transmittedData < 0)
+    {
+    m_transmittedData = 0;
+    }
+}
 
 void
 PacketScheduler::FlowToSchedule::UpdateAllocatedBits (int allocatedBits)
@@ -192,6 +207,17 @@ std::vector<int>*
 PacketScheduler::FlowToSchedule::GetListOfAllocatedRBs ()
 {
   return &m_listOfAllocatedRBs;
+}
+
+std::vector<int>*
+PacketScheduler::FlowToSchedule::GetListOfAllocatedRBsForFrame()
+{
+  return &m_listOfAllocatedRBsForFrame;
+}
+
+std::vector<int> *
+PacketScheduler::FlowToSchedule::GetListOfSelectedMCSForFrame(){
+  return &m_listOfSelectedMCSForFrame;
 }
 
 std::vector<int>*

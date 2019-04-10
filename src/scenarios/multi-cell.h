@@ -48,7 +48,7 @@
 #include <stdlib.h>
 #include <cstring>
 
-
+extern int OUT;
 static void MultiCell (int nbCell, double radius,
                        int nbUE,
                        int nbVoIP, int nbVideo, int nbBE, int nbCBR,
@@ -63,8 +63,8 @@ static void MultiCell (int nbCell, double radius,
   double duration = 100;
   double flow_duration = 100;
 
-  int cluster = 3;
-  double bandwidth = 10;
+  int cluster = 4;
+  double bandwidth = 5;
 
   // CREATE COMPONENT MANAGER
   Simulator *simulator = Simulator::Init();
@@ -110,7 +110,15 @@ static void MultiCell (int nbCell, double radius,
       case 6:
   	    downlink_scheduler_type = ENodeB::DLScheduler_LOG_RULE;
   	    std::cout << "Scheduler LOG RULE "<< std::endl;
+  	    break;
+  	  case 7:
+  	  	downlink_scheduler_type = ENodeB::DLScheduler_TYPE_TLS;
+  	    std::cout << "Scheduler TLS "<< std::endl;
 	    break;
+	  case 8:
+	  	downlink_scheduler_type = ENodeB::DLScheduler_TYPE_NTLS;
+  	    std::cout << "Scheduler NTLS "<< std::endl;
+  	    break;
       default:
 	    downlink_scheduler_type = ENodeB::DLScheduler_TYPE_PROPORTIONAL_FAIR;
 	    break;
@@ -282,7 +290,7 @@ static void MultiCell (int nbCell, double radius,
 			  VoIPApplication[voipApplication].SetStopTime(duration_time);
 
 			  // create qos parameters
-			  if (downlink_scheduler_type == ENodeB::DLScheduler_TYPE_FLS)
+			  if (downlink_scheduler_type == ENodeB::DLScheduler_TYPE_FLS||downlink_scheduler_type == ENodeB::DLScheduler_TYPE_TLS||downlink_scheduler_type == ENodeB::DLScheduler_TYPE_NTLS)
 				{
 				  QoSForFLS *qos = new QoSForFLS ();
 				  qos->SetMaxDelay (maxDelay);
@@ -398,7 +406,7 @@ static void MultiCell (int nbCell, double radius,
 				  }
 
 			  // create qos parameters
-			  if (downlink_scheduler_type == ENodeB::DLScheduler_TYPE_FLS)
+			  if (downlink_scheduler_type == ENodeB::DLScheduler_TYPE_FLS||downlink_scheduler_type == ENodeB::DLScheduler_TYPE_TLS||downlink_scheduler_type == ENodeB::DLScheduler_TYPE_NTLS)
 				{
 				  QoSForFLS *qos = new QoSForFLS ();
 				  qos->SetMaxDelay (maxDelay);
@@ -541,5 +549,6 @@ static void MultiCell (int nbCell, double radius,
   simulator->SetStop(duration);
   simulator->Schedule(duration-10, &Simulator::PrintMemoryUsage, simulator);
   simulator->Run ();
+  std::cout<<"OUT = "<<OUT<<std::endl;
 
 }

@@ -58,13 +58,16 @@ public:
 	    int m_dataToTransmit;		//bytes
 
 	    std::vector<double> m_spectralEfficiency;
+	    std::vector<int> m_listOfAllocatedRBsForFrame;
 	    std::vector<int> m_listOfAllocatedRBs;
+	    std::vector<int> m_listOfSelectedMCSForFrame;
 	    std::vector<int> m_listOfSelectedMCS;
 	    std::vector<int> m_cqiFeedbacks;
 
 		RadioBearer* GetBearer (void);
 
 		void UpdateAllocatedBits (int allocatedBits);
+		void SetAllocatedBits(int allocatedBits);
 		int GetAllocatedBits (void) const;
 		int GetTransmittedData (void) const;
 		void SetDataToTransmit (int dataToTransmit);
@@ -74,7 +77,9 @@ public:
 		std::vector<double> GetSpectralEfficiency (void);
 
 		std::vector<int>* GetListOfAllocatedRBs ();
+		std::vector<int>* GetListOfAllocatedRBsForFrame();
 		std::vector<int>* GetListOfSelectedMCS ();
+		std::vector<int>* GetListOfSelectedMCSForFrame();
 
 		void SetCqiFeedbacks (std::vector<int> cqiFeedbacks);
 		std::vector<int> GetCqiFeedbacks (void);

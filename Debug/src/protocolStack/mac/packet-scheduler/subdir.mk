@@ -7,6 +7,8 @@ CPP_SRCS += \
 ../src/protocolStack/mac/packet-scheduler/delay-edd-rule-downlink-packet-scheduler.cpp \
 ../src/protocolStack/mac/packet-scheduler/dl-exp-packet-scheduler.cpp \
 ../src/protocolStack/mac/packet-scheduler/dl-fls-packet-scheduler.cpp \
+../src/protocolStack/mac/packet-scheduler/dl-tls-packet-scheduler.cpp \
+../src/protocolStack/mac/packet-scheduler/dl-ntls-packet-scheduler.cpp \
 ../src/protocolStack/mac/packet-scheduler/dl-mlwdf-packet-scheduler.cpp \
 ../src/protocolStack/mac/packet-scheduler/dl-pf-packet-scheduler.cpp \
 ../src/protocolStack/mac/packet-scheduler/downlink-packet-scheduler.cpp \
@@ -23,6 +25,8 @@ OBJS += \
 ./src/protocolStack/mac/packet-scheduler/delay-edd-rule-downlink-packet-scheduler.o \
 ./src/protocolStack/mac/packet-scheduler/dl-exp-packet-scheduler.o \
 ./src/protocolStack/mac/packet-scheduler/dl-fls-packet-scheduler.o \
+../src/protocolStack/mac/packet-scheduler/dl-tls-packet-scheduler.o \
+../src/protocolStack/mac/packet-scheduler/dl-ntls-packet-scheduler.o \
 ./src/protocolStack/mac/packet-scheduler/dl-mlwdf-packet-scheduler.o \
 ./src/protocolStack/mac/packet-scheduler/dl-pf-packet-scheduler.o \
 ./src/protocolStack/mac/packet-scheduler/downlink-packet-scheduler.o \
@@ -39,6 +43,8 @@ CPP_DEPS += \
 ./src/protocolStack/mac/packet-scheduler/delay-edd-rule-downlink-packet-scheduler.d \
 ./src/protocolStack/mac/packet-scheduler/dl-exp-packet-scheduler.d \
 ./src/protocolStack/mac/packet-scheduler/dl-fls-packet-scheduler.d \
+../src/protocolStack/mac/packet-scheduler/dl-tls-packet-scheduler.d \
+../src/protocolStack/mac/packet-scheduler/dl-ntls-packet-scheduler.d \
 ./src/protocolStack/mac/packet-scheduler/dl-mlwdf-packet-scheduler.d \
 ./src/protocolStack/mac/packet-scheduler/dl-pf-packet-scheduler.d \
 ./src/protocolStack/mac/packet-scheduler/downlink-packet-scheduler.d \

@@ -75,7 +75,9 @@ public:
 	    DLScheduler_TYPE_MLWDF,
 	    DLScheduler_TYPE_EXP,
 	    DLScheduler_LOG_RULE,
-	    DLScheduler_EXP_RULE
+	    DLScheduler_EXP_RULE,
+	    DLScheduler_TYPE_TLS,
+	    DLScheduler_TYPE_NTLS
 	  };
 	enum ULSchedulerType
 	  {

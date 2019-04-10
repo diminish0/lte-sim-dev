@@ -30,6 +30,8 @@
 #include "../protocolStack/mac/packet-scheduler/dl-mlwdf-packet-scheduler.h"
 #include "../protocolStack/mac/packet-scheduler/dl-exp-packet-scheduler.h"
 #include "../protocolStack/mac/packet-scheduler/dl-fls-packet-scheduler.h"
+#include "../protocolStack/mac/packet-scheduler/dl-tls-packet-scheduler.h"
+#include "../protocolStack/mac/packet-scheduler/dl-ntls-packet-scheduler.h"
 #include "../protocolStack/mac/packet-scheduler/exp-rule-downlink-packet-scheduler.h"
 #include "../protocolStack/mac/packet-scheduler/log-rule-downlink-packet-scheduler.h"
 #include "../protocolStack/mac/packet-scheduler/enhanced-uplink-packet-scheduler.h"
@@ -314,6 +316,18 @@ ENodeB::SetDLScheduler (ENodeB::DLSchedulerType type)
       	scheduler = new  DL_FLS_PacketScheduler ();
       	scheduler->SetMacEntity (mac);
       	mac->SetDownlinkPacketScheduler (scheduler);
+        break;
+
+      case ENodeB::DLScheduler_TYPE_TLS:
+        scheduler=new DL_TLS_PacketScheduler();
+        scheduler->SetMacEntity(mac);
+        mac->SetDownlinkPacketScheduler(scheduler);
+        break;
+
+      case ENodeB::DLScheduler_TYPE_NTLS:
+        scheduler=new DL_NTLS_PacketScheduler();
+        scheduler->SetMacEntity(mac);
+        mac->SetDownlinkPacketScheduler(scheduler);
         break;
 
       case ENodeB::DLScheduler_TYPE_EXP:

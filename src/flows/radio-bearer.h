@@ -63,6 +63,10 @@ public:
 	double GetHeadOfLinePacketDelay (void);
 	int GetHeadOfLinePacketSize (void);
 	int GetByte (int byte); //for FLS scheduler
+	int Getflag();
+	void Setflag(int a);
+	void Updateflag(int a);
+
 
 private:
 	Application* m_application;
@@ -73,6 +77,7 @@ private:
 	double m_averageTransmissionRate;
 	int m_transmittedBytes;
 	double m_lastUpdate;
+	int flag;
 };
 
 #endif /* RADIOBEARER_H_ */

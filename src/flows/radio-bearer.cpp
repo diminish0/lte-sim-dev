@@ -42,6 +42,7 @@ RadioBearer::RadioBearer()
 {
   m_macQueue = new MacQueue ();
   m_application = NULL;
+  flag=0;
 
   //RlcEntity *rlc = new TmRlcEntity ();
   RlcEntity *rlc = new AmRlcEntity ();
@@ -372,4 +373,15 @@ RadioBearer::GetByte (int byte)
 
 	return maxData;
 
+}
+
+int RadioBearer::Getflag(){
+  return flag;
+}
+
+void RadioBearer::Setflag(int a){
+  flag=a;
+}
+void RadioBearer::Updateflag(int a){
+  flag+=a;
 }
